@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Vocab & PYQ Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="main-title">Vocab & PYQ Engine</h1>
+    </header>
+
+    <div class="container">
+        <!-- Top Bar for Back Action -->
+        <div class="top-bar">
+            <button id="btn-return" class="btn-return" onclick="handleReturn()">← Return</button>
+        </div>
+
+        <!-- 1. MAIN MENU VIEW -->
+        <div id="view-main" class="view active">
+            <div class="menu-grid">
+                <div class="menu-card" onclick="navigateTo('word-meanings')">Word Meanings</div>
+                <div class="menu-card" onclick="navigateTo('phrasal-verbs')">Phrasal Verbs</div>
+                <div class="menu-card" onclick="navigateTo('spellings')">Spellings</div>
+                <div class="menu-card" onclick="navigateTo('idioms-phrases')">Idioms and Phrases</div>
+                <div class="menu-card" onclick="navigateTo('pyq-idioms')">PYQ Idioms and Phrases</div>
+                <div class="menu-card" onclick="navigateTo('pyq-word-meanings')">PYQ Word Meanings</div>
+                <!-- NEW: Dynamic Mixed Sets Generator -->
+                <div class="menu-card" onclick="navigateTo('mixed-sets')" style="grid-column: 1 / -1; border-color: #00ff87; color: #00ff87;">🔥 Generate Mixed Sets (All Topics)</div>
+            </div>
+        </div>
+
+        <!-- 2. ALPHABETICAL SUB-MENU VIEW (Specifically for PYQ Word Meanings) -->
+        <div id="view-alpha" class="view">
+            <div class="menu-grid" id="alpha-grid"></div>
+        </div>
+
+        <!-- 3. LEVELS SUB-MENU VIEW -->
+        <div id="view-levels" class="view">
+            <div class="menu-grid" id="levels-grid"></div>
+        </div>
+
+        <!-- 4. QUIZ CONTAINER VIEW -->
+        <div id="view-quiz" class="view">
+            <div class="quiz-header">
+                <span id="quiz-title-badge">Level 1</span>
+                <span id="quiz-progress-text">Question 1 of 25</span>
+            </div>
+
+            <div id="question-text" class="question-box">Loading Question...</div>
+
+            <div id="options-container" class="options-list"></div>
+
+            <!-- Bottom Navigation controls -->
+            <div class="bottom-nav">
+                <button id="btn-prev" class="btn-nav" onclick="changeQuestion(-1)">Previous</button>
+                <button id="btn-next" class="btn-nav" onclick="changeQuestion(1)">Next</button>
+            </div>
+        </div>
+
+        <!-- 5. RESULTS VIEW -->
+        <div id="view-results" class="view" style="text-align: center; padding: 40px 0;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Set Cleared!</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Your final score:</p>
+            <div id="score-display" style="font-size: 4rem; font-weight: 800; color: #00ff87; margin-bottom: 40px; text-shadow: 0 0 20px rgba(0, 255, 135, 0.3);">0 / 25</div>
+            <button class="btn-nav" onclick="handleReturn()" style="width: 100%; max-width: 300px;">Back to Menu</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

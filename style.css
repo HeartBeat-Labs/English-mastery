@@ -1,0 +1,317 @@
+:root {
+    /* New Vibrant Aurora Theme */
+    --bg-dark: #0d0914;
+    --card-bg: #1a132e;
+    --accent-1: #ff5e00; /* Neon Orange */
+    --accent-2: #bc13fe; /* Electric Violet */
+    --accent-3: #00e5ff; /* Cyan */
+    --accent-4: #20e3b2; /* Mint Green */
+    --accent-5: #ff007f; /* Hot Pink */
+    --accent-6: #ffea00; /* Cyber Yellow */
+    --correct-color: #20e3b2;
+    --wrong-color: #ff3366;
+    --text-main: #f8f9fa;
+    --text-muted: #9ba3b5;
+    --glow-opacity: 0.3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* New vibrant mesh gradient background */
+    background-image: 
+        radial-gradient(circle at 15% 10%, rgba(188, 19, 254, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(255, 94, 0, 0.1) 0%, transparent 40%);
+    background-attachment: fixed;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 850px;
+    /* Fixed text-shadow + gradient conflict by moving shadow to parent */
+    filter: drop-shadow(0 0 15px rgba(188, 19, 254, 0.3));
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    min-height: 500px;
+    position: relative;
+    backdrop-filter: blur(12px);
+}
+
+/* Top Navigation Bar */
+.top-bar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.btn-return {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: none;
+}
+
+.btn-return:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-3);
+    color: var(--accent-3);
+    transform: translateX(-3px);
+}
+
+/* Base View Layouts */
+.view {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu Grid System */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.menu-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 25px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+}
+
+/* Vivid 6-Color Loop */
+.menu-card:nth-child(6n + 1) { border-color: var(--accent-1); color: var(--accent-1); }
+.menu-card:nth-child(6n + 2) { border-color: var(--accent-2); color: var(--accent-2); }
+.menu-card:nth-child(6n + 3) { border-color: var(--accent-3); color: var(--accent-3); }
+.menu-card:nth-child(6n + 4) { border-color: var(--accent-4); color: var(--accent-4); }
+.menu-card:nth-child(6n + 5) { border-color: var(--accent-5); color: var(--accent-5); }
+.menu-card:nth-child(6n + 6) { border-color: var(--accent-6); color: var(--accent-6); }
+
+.menu-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.menu-card:nth-child(6n + 1):hover { box-shadow: 0 10px 25px rgba(255, 94, 0, var(--glow-opacity)); }
+.menu-card:nth-child(6n + 2):hover { box-shadow: 0 10px 25px rgba(188, 19, 254, var(--glow-opacity)); }
+.menu-card:nth-child(6n + 3):hover { box-shadow: 0 10px 25px rgba(0, 229, 255, var(--glow-opacity)); }
+.menu-card:nth-child(6n + 4):hover { box-shadow: 0 10px 25px rgba(32, 227, 178, var(--glow-opacity)); }
+.menu-card:nth-child(6n + 5):hover { box-shadow: 0 10px 25px rgba(255, 0, 127, var(--glow-opacity)); }
+.menu-card:nth-child(6n + 6):hover { box-shadow: 0 10px 25px rgba(255, 234, 0, var(--glow-opacity)); }
+
+/* Submenu Level Cards Base Modifications */
+.level-card {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.progress-badge {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* Quiz Interface Component Styling */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 15px;
+}
+
+#quiz-title-badge {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent-3);
+    padding: 5px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.question-box {
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.option-btn {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    padding: 18px 22px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover:not([disabled]) {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* FIXED: Replaced font-weight jump with text-shadow and border-width adjustments to prevent layout shifting */
+.option-btn.correct {
+    background-color: rgba(32, 227, 178, 0.1) !important;
+    border-color: var(--correct-color) !important;
+    color: var(--correct-color) !important;
+    text-shadow: 0 0 8px rgba(32, 227, 178, 0.4);
+    box-shadow: 0 0 20px rgba(32, 227, 178, 0.15);
+}
+
+.option-btn.wrong {
+    background-color: rgba(255, 51, 102, 0.1) !important;
+    border-color: var(--wrong-color) !important;
+    color: var(--wrong-color) !important;
+    text-shadow: 0 0 8px rgba(255, 51, 102, 0.4);
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.15);
+}
+
+/* Bottom Quiz Navigation Controls */
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 25px;
+}
+
+.btn-nav {
+    background: linear-gradient(135deg, var(--accent-1), #ff2a5f);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 94, 0, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-nav:hover:not([disabled]) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 94, 0, 0.4);
+}
+
+.btn-nav:disabled {
+    background: #251c36;
+    color: #584a75;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN FOR MOBILE
+   ========================================= */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .container {
+        padding: 20px;
+        min-height: 400px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+    .menu-card {
+        padding: 15px 10px;
+        font-size: 1rem;
+        min-height: 100px;
+    }
+
+    .question-box {
+        font-size: 1.2rem;
+    }
+
+    .option-btn {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
+
+    .btn-nav {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
